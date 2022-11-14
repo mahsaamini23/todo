@@ -28,7 +28,8 @@ const AddTask =({form ,setForm , mode, setMode,setOpen})=>{
     }
 
     return(
-        <Grid component="form" onSubmit={handleSubmit} style={{ width:'450px',border:'1px solid grey' , borderRadius:'10px', padding:'15px 25px'}}>
+        <Grid component="form" noValidate onSubmit={handleSubmit} 
+        sx={{ width:'450px',border:'1px solid grey' , borderRadius:'10px', padding:'15px 25px'}}>
             <Typography>Add Task</Typography>
             <Grid sx={{display:'flex', flexDirection:'column',margin:'20px 0'}}>
                 <TextField 
@@ -59,6 +60,7 @@ const AddTask =({form ,setForm , mode, setMode,setOpen})=>{
                         Cancel
                 </Button>
                 <Button type="submit"
+                
                 sx={{
                     backgroundColor:'#ef5350', 
                     color:'White',fontSize:'12px',

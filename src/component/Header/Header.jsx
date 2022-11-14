@@ -53,11 +53,21 @@ const Search = styled('div')(({ theme }) => ({
     },
   }));
 
-const Header =()=>{
+
+
+const Header =({setSearch, setOpen})=>{
     const [ShowCalendar, setShowCalendar] = useState(false)
 
     const handleShowCalendar=()=>{
         setShowCalendar(current => !current)
+    }
+    
+    const handleSearch=(e)=>{
+      setSearch(e.target.value)
+    }
+
+    const handleClickOpen = () => {
+      setOpen(true);
     }
 
     return(
@@ -73,15 +83,16 @@ const Header =()=>{
                             <StyledInputBase
                                 placeholder="Search…"
                                 inputProps={{ 'aria-label': 'search' }}
+                                onChange={handleSearch}
                             />
                         </Search>
                     </Grid>
                     <Grid>
-                        <IconButton>
-                            <AddIcon sx={{color:'white'}}/>
+                        <IconButton onClick={handleClickOpen}>
+                            <AddIcon sx={{color:'white'}} />
                         </IconButton>
-                        <IconButton>
-                            <CalendarMonthIcon sx={{color:'white'}} onClick={handleShowCalendar}/>
+                        <IconButton onClick={handleShowCalendar}>
+                            <CalendarMonthIcon sx={{color:'white'}} />
                         </IconButton>
                     </Grid>
                     {/* <Box sx={{position:'absolute', top:'5px', right:'25px'}} display={ShowCalendar ? 'flex' : 'none'}>
@@ -90,7 +101,7 @@ const Header =()=>{
                 </Toolbar>
             </AppBar>
         </Box>
-        <Box sx={{padding:'5px 25px  0 0 ', flexDirection:'row-reverse'}} display={ShowCalendar ? 'flex' : 'none'}>
+        <Box sx={{ position:'absolute',top:'5px',zIndex:'10', right:'10px', flexDirection:'row-reverse'}} display={ShowCalendar ? 'flex' : 'none'}>
             <MyCalendar/>
         </Box>
         </>

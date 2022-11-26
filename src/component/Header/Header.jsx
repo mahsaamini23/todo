@@ -1,15 +1,14 @@
 import React,{useState} from "react";
-import MyCalendar from "../Calendar/Calendar";
 import { styled, alpha } from '@mui/material/styles';
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar  from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Grid from '@mui/material/Grid';
 import IconButton  from "@mui/material/IconButton";
 import AddIcon from '@mui/icons-material/Add';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -56,26 +55,23 @@ const Search = styled('div')(({ theme }) => ({
 
 
 const Header =({setSearch, setOpen})=>{
-    const [ShowCalendar, setShowCalendar] = useState(false)
-
-    const handleShowCalendar=()=>{
-        setShowCalendar(current => !current)
-    }
     
-    const handleSearch=(e)=>{
-      setSearch(e.target.value)
-    }
+    
+  const handleSearch=(e)=>{
+    setSearch(e.target.value)
+  }
 
-    const handleClickOpen = () => {
-      setOpen(true);
-    }
+  const handleClickOpen = () => {
+    setOpen(true);
+  }
 
     return(
         <>
         <Box>
             <AppBar sx={{backgroundColor:'#ef5350'}}>
                 <Toolbar sx={{display:'flex', justifyContent:'space-between'}}>
-                    <Grid>
+                    <Grid container sx={{width:'30%', justifyContent:'space-between', gap:'20px'}}>
+                      <Typography>Todoist</Typography>
                         <Search>
                             <SearchIconWrapper>
                                 <SearchIcon />
@@ -91,9 +87,6 @@ const Header =({setSearch, setOpen})=>{
                         <IconButton onClick={handleClickOpen}>
                             <AddIcon sx={{color:'white'}} />
                         </IconButton>
-                        <IconButton onClick={handleShowCalendar}>
-                            <CalendarMonthIcon sx={{color:'white'}} />
-                        </IconButton>
                     </Grid>
                     {/* <Box sx={{position:'absolute', top:'5px', right:'25px'}} display={ShowCalendar ? 'flex' : 'none'}>
                         <MyCalendar/>
@@ -101,11 +94,7 @@ const Header =({setSearch, setOpen})=>{
                 </Toolbar>
             </AppBar>
         </Box>
-        <Box sx={{ position:'absolute',top:'5px',zIndex:'10', right:'10px', flexDirection:'row-reverse'}} display={ShowCalendar ? 'flex' : 'none'}>
-            <MyCalendar/>
-        </Box>
-        </>
-        
+      </>  
     )
 }
 

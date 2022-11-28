@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import { styled, alpha } from '@mui/material/styles';
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -9,6 +9,8 @@ import SearchIcon from '@mui/icons-material/Search';
 import Grid from '@mui/material/Grid';
 import IconButton  from "@mui/material/IconButton";
 import AddIcon from '@mui/icons-material/Add';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -23,9 +25,9 @@ const Search = styled('div')(({ theme }) => ({
       marginLeft: theme.spacing(1),
       width: 'auto',
     },
-  }));
+}));
   
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled('div')(({ theme }) => ({
     padding: theme.spacing(0, 2),
     height: '100%',
     position: 'absolute',
@@ -33,28 +35,25 @@ const Search = styled('div')(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-  }));
+}));
   
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: 'inherit',
     '& .MuiInputBase-input': {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create('width'),
       width: '100%',
       [theme.breakpoints.up('sm')]: {
-        width: '12ch',
+        width: '20ch',
         '&:focus': {
-          width: '20ch',
+          width: '30ch',
         },
       },
     },
-  }));
+}));
 
-
-
-const Header =({setSearch, setOpen})=>{
+const Header =({setSearch, setOpen, setShowCalendar})=>{
     
     
   const handleSearch=(e)=>{
@@ -65,13 +64,16 @@ const Header =({setSearch, setOpen})=>{
     setOpen(true);
   }
 
+  const handleShowCalendar=()=>{
+    setShowCalendar(current => !current)
+}
+
     return(
         <>
         <Box>
             <AppBar sx={{backgroundColor:'#ef5350'}}>
                 <Toolbar sx={{display:'flex', justifyContent:'space-between'}}>
-                    <Grid container sx={{width:'30%', justifyContent:'space-between', gap:'20px'}}>
-                      <Typography>Todoist</Typography>
+                    <Grid container sx={{width:'50%', justifyContent:'flex-start'}}>
                         <Search>
                             <SearchIconWrapper>
                                 <SearchIcon />
@@ -87,10 +89,10 @@ const Header =({setSearch, setOpen})=>{
                         <IconButton onClick={handleClickOpen}>
                             <AddIcon sx={{color:'white'}} />
                         </IconButton>
+                        <IconButton onClick={handleShowCalendar}>
+                            <CalendarMonthIcon sx={{color:'white'}}/>
+                        </IconButton>
                     </Grid>
-                    {/* <Box sx={{position:'absolute', top:'5px', right:'25px'}} display={ShowCalendar ? 'flex' : 'none'}>
-                        <MyCalendar/>
-                    </Box> */}
                 </Toolbar>
             </AppBar>
         </Box>

@@ -17,17 +17,14 @@ export const todoSlice = createSlice({
         DeleteItem:(state, action)=>{
             const index = state.findIndex(todo => todo.id === action.payload);
             state.splice(index,1)
-
         },
         EditItem:(state ,action)=>{
             const index = state.findIndex(todo=>todo.id===action.payload.id)
             state[index]= action.payload
-
         },
         CheckItem:(state, action)=>{
             const index = state.findIndex(todo => todo.id===action.payload)
             state[index].status = !state[index].status
-            console.log(state[index].status)
         }
 
     }

@@ -3,7 +3,6 @@ import { styled, alpha } from '@mui/material/styles';
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar  from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Grid from '@mui/material/Grid';

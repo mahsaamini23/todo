@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {useDispatch } from "react-redux";
 import {DeleteItem} from "../redux/todoReducer/todoReducer";
 import Grid from "@mui/material/Grid";
 import Dialog from '@mui/material/Dialog';
